@@ -1,0 +1,36 @@
+<div class="form-container">
+  <form [formGroup]="forms" (ngSubmit)="addUser()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" name="name" formControlName="name">
+    </div>
+     <div class="form-group">
+      <label for="contact">Contact:</label>
+      <input type="text" name="contact" formControlName="contact">
+    </div>
+     <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" name="email" formControlName="email">
+    </div>
+     <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="text" name="password" formControlName="password">
+    </div>
+     <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="text" name="confirmPassword" formControlName="confirmPassword">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+<div>
+  <ul>
+    <li *ngFor="let user of userList">
+      <p>Name: {{user.name}}</p>
+      <p>Contact: {{user.contact}}</p>
+      <p>Email: {{user.email}}</p>
+      <p>Password: {{user.password}}</p>
+      <p>Confirm Password: {{user.confirmPassword}}</p>
+    </li>
+  </ul>
+</div>
