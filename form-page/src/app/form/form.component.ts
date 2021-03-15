@@ -22,12 +22,10 @@ export class FormComponent implements OnInit {
     this.forms = new FormGroup({
       name: new FormControl('', [Validators.required]),
       contact: new FormControl('', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(10), Validators.maxLength(10)]),
-      email: new FormControl('', [Validators.required, Validators.email])
-      // password: new FormControl('',[Validators.required]),
-      // confirmPassword: new FormControl('', [Validators.required])
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('',[Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required])
     })
   }
-
-
 
 }

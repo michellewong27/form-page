@@ -26,7 +26,7 @@
       <div *ngIf="forms.get('email')!.hasError('required')">Email required</div>
       <div *ngIf="forms.get('email')!.hasError('email') && !forms.get('email')!.hasError('required')">Email is invalid</div>
     </div>
-<!-- 
+
      <div class="form-group">
       <label for="password">Password:</label>
       <input type="text" name="password" formControlName="password">
@@ -34,7 +34,7 @@
      <div class="form-group">
       <label for="confirmPassword">Confirm Password:</label>
       <input type="text" name="confirmPassword" formControlName="confirmPassword">
-    </div> -->
+    </div>
     <button type="submit">Submit</button>
   </form>
 </div>
@@ -44,8 +44,8 @@
       <B>Name: </B>{{user.name}}
       <B>Contact: </B>{{user.contact}}
       <B>Email: </B>{{user.email}}
-      <!-- <p>Password: {{user.password}}</p>
-      <p>Confirm Password: {{user.confirmPassword}}</p> -->
+      <B>Password:</B> {{user.password}}
+      <B>Confirm Password:</B> {{user.confirmPassword}}
     </li>
   </ul>
 </div>
