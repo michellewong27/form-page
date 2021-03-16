@@ -31,11 +31,21 @@
       <label for="password">Password:</label>
       <input type="text" name="password" formControlName="password">
     </div>
+    <div *ngIf="forms.get('password')!.touched && forms.get('password')!.invalid"  class="alert alert-danger">
+      <div *ngIf="forms.get('password')!.hasError('required')">Password required</div>
+      <div *ngIf="forms.get('password')!.hasError('minLength')">Minimum length is 4</div>
+    </div>
+
      <div class="form-group">
       <label for="confirmPassword">Confirm Password:</label>
       <input type="text" name="confirmPassword" formControlName="confirmPassword">
     </div>
-    <button type="submit" [disabled]="!forms.valid">Submit</button>
+    <div *ngIf="forms.get('confirmPassword')!.touched && forms.get('password')!.invalid"  class="alert alert-danger">
+      <div *ngIf="forms.get('confirmPassword')!.hasError('required')">Confirm password is required</div>
+      <div *ngIf="forms.get('confirmPassword')!.hasError('mustMatch')">Confirm password does not match</div>
+    </div>
+
+    <button type="submit" [disabled]="!forms.valid" class="btn btn-success">Submit</button>
   </form>
 </div>
 <div>

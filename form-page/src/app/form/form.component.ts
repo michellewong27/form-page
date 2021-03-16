@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/model/user';
+import {ConfirmPasswordValidator} from 'src/app/CustomValidator/custom-validator';
 
 @Component({
   selector: 'app-form',
@@ -16,15 +17,17 @@ export class FormComponent implements OnInit {
     this.userList.push(this.forms.value);
   }
 
-   constructor() { }
+   constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
-    this.forms = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      contact: new FormControl('', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(10), Validators.maxLength(10)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('',[Validators.required]),
-      confirmPassword: new FormControl('', [Validators.required])
+    this.forms = this.fb.group({
+      name: ['', Validators.required],
+      contact: ['', [Validators.required, Validators.pattern('[0-9]*'), Validators.minLength(10), Validators.maxLength(10)] ],
+      email: ['', [Validators.required, Validators.email] ],
+      password: ['',[Validators.required, Validators.minLength(4)] ],
+      confirmPassword: ['', Validators.required]
+    }, {
+      validator: ConfirmPasswordValidator('password', 'confirmPassword')
     })
   }
 
